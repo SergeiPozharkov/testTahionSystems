@@ -21,12 +21,7 @@ use App\Classes\TableColumnComments;
 <body>
 <?php
 $config = include '../config.php';
-// test data
-//$testData = [
-//    ["id" => 1, "name" => "Иван", "surname" => "Иванов", "birth_date" => "1980-10-04", "education" => "УО 'ВГТУ'", "position" => "WEB Developer", "vage" => "1100"],
-//    ["id" => 2, "name" => "Петр", "surname" => "Петров", "birth_date" => "1980-10-04", "education" => "УО 'ВГТУ'", "position" => "WEB Developer", "vage" => "900"],
-//    ["id" => 3, "name" => "Станислав", "surname" => "Сидоров", "birth_date" => "1980-10-04", "education" => "УО 'ВГТУ'", "position" => "WEB Developer", "vage" => "800"]
-//];
+
 $tableHeaders = new TableColumnComments($config);
 $read = new Read($config);
 $data = $read->getAll();
@@ -46,8 +41,6 @@ echo (new Table)
     ->addColumn(fn($value) => "<a class='btn btn-danger' href='operations/del.php?id=$value[id]'>Удалить</a>")
     ->addColumn(fn($value) => "<a class='btn btn-warning' href='show/showEdit.php?id=$value[id]'>Редактировать</a>")
     ->render();
-// test headers
-//['№', 'Имя', 'Фамилия', 'Дата рождения', 'Образование', 'Должность', 'Заработная плата']
 ?>
 <a href="show/showAdd.php" class="btn btn-primary">Добавить сотрудника</a>
 </body>
