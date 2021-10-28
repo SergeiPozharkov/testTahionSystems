@@ -29,19 +29,21 @@ $data = $read->getAll();
 $headers = $tableHeaders->columnComments();
 
 $headers['delete'] = 'Удаление';
-$headers['update'] = 'Редактирование';
+$headers['edit'] = 'Редактирование';
 
 foreach ($data as &$rowDate) {
     $rowDate['birth_date'] = date('d-m-Y', strtotime($rowDate['birth_date']));
 }
+
 echo (new Table)
     ->setData($data)
     ->setHeaders($headers)
     ->setClass('table table-dark table-striped')
-    ->addColumn(fn($value) => "<a class='btn btn-danger' href='operations/del.php?id=$value[id]'>Удалить</a>")
+    ->addColumn(fn($value) => "<a class='btn btn-danger' id='deleted' onclick='confirmCheck(this)'  href='operations/del.php?id=$value[id]'>Удалить</a>")
     ->addColumn(fn($value) => "<a class='btn btn-warning' href='show/showEdit.php?id=$value[id]'>Редактировать</a>")
     ->render();
 ?>
 <a href="show/showAdd.php" class="btn btn-primary">Добавить сотрудника</a>
+<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

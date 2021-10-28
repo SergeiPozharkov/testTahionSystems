@@ -56,6 +56,16 @@ ALERT;
     echo "<a href='../index.php' class='btn btn-primary'>Вернуться</a>";
     include '../includs/botHtml.php';
     die();
+} elseif (is_numeric($_POST['vage']) === false) {
+    include '../includs/topHtml.php';
+    echo <<<ALERT
+<div class="alert alert-danger" role="alert">
+Введён текст, а не число!
+</div>
+ALERT;
+    echo "<a href='../index.php' class='btn btn-primary'>Вернуться</a>";
+    include '../includs/botHtml.php';
+    die();
 }
 
 
