@@ -39,7 +39,7 @@ echo (new Table)
     ->setData($data)
     ->setHeaders($headers)
     ->setClass('table table-dark table-striped')
-    ->addColumn(fn($value) => "<a class='btn btn-danger' id='deleted' onclick='confirmCheck(this)'  href='operations/del.php?id=$value[id]'>Удалить</a>")
+    ->addColumn(fn($value) => "<a class='btn btn-danger' onclick='confirmCheck(this)'  href='operations/del.php?id=$value[id]'>Удалить</a>")
     ->addColumn(fn($value) => "<a class='btn btn-warning' href='show/showEdit.php?id=$value[id]'>Редактировать</a>")
     ->render();
 ?>
